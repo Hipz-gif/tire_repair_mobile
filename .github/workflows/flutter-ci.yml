@@ -21,7 +21,8 @@ jobs:
       - name: 🔧 Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.16.0' # Cập nhật phiên bản Flutter
+          flutter-version: '3.27.3' # Cập nhật phiên bản Flutter
+          channel: "stable"
 
       - name: 📦 Install dependencies
         run: flutter pub get
