@@ -21,10 +21,26 @@ class BannerWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: Column(
           children: [
-            Image.network(imageUrl, fit: BoxFit.cover),
-            ListTile(
-              title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-              subtitle: Text(content),
+            // Đảm bảo rằng hình ảnh có kích thước cố định
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height *
+                    0.27, // Giới hạn chiều cao
+                maxWidth:
+                    MediaQuery.of(context).size.width, // Giới hạn chiều rộng
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  imageUrl.isNotEmpty
+                      ? imageUrl
+                      : 'https://via.placeholder.com/150',
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(Icons.error);
+                  },
+                ),
+              ),
             ),
           ],
         ),

@@ -4,13 +4,11 @@ import 'package:tire_repair_mobile/di/service_locator.dart';
 import 'package:tire_repair_mobile/presentation/blocs/auth_bloc.dart';
 import 'package:tire_repair_mobile/presentation/blocs/spare_part_bloc.dart';
 import 'package:tire_repair_mobile/presentation/blocs/banner_bloc.dart';
-import 'package:tire_repair_mobile/presentation/pages/login_page.dart';
-import 'package:tire_repair_mobile/presentation/pages/register_page.dart';
-import 'package:tire_repair_mobile/presentation/pages/home_page.dart';
-import 'package:tire_repair_mobile/presentation/pages/splash_screen.dart';
 import 'package:tire_repair_mobile/domain/repositories/auth_repository.dart';
 import 'package:tire_repair_mobile/domain/repositories/spare_part_repository.dart';
 import 'package:tire_repair_mobile/domain/repositories/banner_repository.dart';
+import 'package:tire_repair_mobile/resources/routes.dart';
+import 'package:tire_repair_mobile/routes/app_routes.dart';
 
 void main() {
   setupLocator();
@@ -51,17 +49,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute:
-          '/splash', // Đặt màn hình SplashScreen làm màn hình đầu tiên
-      routes: {
-        '/splash': (context) =>
-            const SplashScreen(), // Thêm route cho SplashScreen
-        '/login': (context) => const LoginPage(),
-        '/register': (context) => const RegisterPage(),
-        '/home': (context) => const HomePage(),
-      },
+          RouteName.splash, // Đặt màn hình SplashScreen làm màn hình đầu tiên
+      onGenerateRoute:
+          generateRoute, // Sử dụng hàm generateRoute từ app_routes.dart
     );
   }
 }
