@@ -28,8 +28,6 @@ class SparePartRepositoryImpl implements SparePartRepository {
           .toList();
     } catch (e) {
       throw Exception('Failed to fetch spare parts: $e');
-      print("Error: $e");
-      ;
     }
   }
 }

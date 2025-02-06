@@ -20,23 +20,20 @@ class SparePartRemoteDataSourceImpl implements SparePartRemoteDataSource {
       if (response.statusCode == 200) {
         try {
           final List<dynamic> data = jsonDecode(response.body);
-          print('API Response: $data');
+
           List<SparePartModel> spareParts = data
               .map((jsonItem) => SparePartModel.fromJson(jsonItem))
               .toList();
           return spareParts;
         } catch (e) {
-          print('Error parsing response: $e');
           throw Exception('Error parsing response');
         }
       } else {
-        print('API Error: ${response.statusCode}');
         final errorMessage =
             jsonDecode(response.body)['message'] ?? SparePartError.fetchError;
         throw Exception('Failed to fetch spare parts: $errorMessage');
       }
     } catch (e) {
-      print('Error in fetchSpareParts: $e'); // In ra lỗi chi tiết
       throw Exception('${SparePartError.networkError}: $e');
     }
   }
