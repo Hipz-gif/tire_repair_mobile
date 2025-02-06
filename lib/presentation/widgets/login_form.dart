@@ -6,10 +6,10 @@ class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
 
   @override
-  _LoginFormState createState() => _LoginFormState();
+  LoginFormState createState() => LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class LoginFormState extends State<LoginForm> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -73,12 +73,13 @@ class _LoginFormState extends State<LoginForm> {
                     BlocBuilder<AuthBloc, AuthState>(
                       builder: (context, state) {
                         if (state is AuthLoading) {
-                          return const Center(child: CircularProgressIndicator());
+                          return const Center(
+                              child: CircularProgressIndicator());
                         }
 
-                        if (state is AuthSuccess) {
-                          // Sau khi đăng nhập thành công, điều hướng đến trang chính
-                          Future.delayed(Duration.zero, () {
+                        if (state is AuthSuccess && context.mounted) {
+                          Future.microtask(() {
+                            // ignore: use_build_context_synchronously
                             Navigator.pushReplacementNamed(context, '/home');
                           });
                         }
