@@ -1,25 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:tire_repair_mobile/data/models/spare_part_model.dart';
 
 class SearchBarWidget extends StatelessWidget {
-  final ValueChanged<String> onSearch;
+  final Function(String) onSearch;
+  final List<SparePartModel> spareParts;
+  final Function(SparePartModel) onSelect;
 
-  const SearchBarWidget({super.key, required this.onSearch});
+  const SearchBarWidget({
+    super.key,
+    required this.onSearch,
+    required this.spareParts,
+    required this.onSelect,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.all(8.0),
       child: TextField(
-        onChanged: onSearch, // Gọi callback khi thay đổi nội dung
+        onChanged: onSearch,
         decoration: InputDecoration(
-          hintText: 'Tìm kiếm phụ tùng...',
-          prefixIcon: const Icon(Icons.search),
+          labelText: 'Tìm kiếm phụ tùng',
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Colors.grey),
+            borderRadius: BorderRadius.circular(8),
           ),
-          filled: true,
-          fillColor: Colors.white,
+          suffixIcon: IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              // Thực hiện hành động tìm kiếm
+            },
+          ),
         ),
       ),
     );

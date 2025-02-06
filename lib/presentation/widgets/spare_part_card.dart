@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tire_repair_mobile/data/models/spare_part_model.dart';
-import 'package:tire_repair_mobile/presentation/pages/spare_part_detail_page.dart';
+import 'package:tire_repair_mobile/presentation/pages/spare_parts/spare_part_detail_page.dart';
 
 class SparePartCard extends StatelessWidget {
   final SparePartModel sparePart;

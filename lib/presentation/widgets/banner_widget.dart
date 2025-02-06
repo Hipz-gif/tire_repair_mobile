@@ -21,7 +21,7 @@ class BannerWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: Column(
           children: [
-            // Đảm bảo rằng hình ảnh có kích thước cố định
+            // Đảm bảo rằng hình ảnh chiếm hết không gian thẻ
             ConstrainedBox(
               constraints: BoxConstraints(
                 maxHeight: MediaQuery.of(context).size.height *
@@ -35,7 +35,11 @@ class BannerWidget extends StatelessWidget {
                   imageUrl.isNotEmpty
                       ? imageUrl
                       : 'https://via.placeholder.com/150',
-                  fit: BoxFit.cover,
+                  fit: BoxFit.cover, // Đảm bảo hình ảnh phủ kín không gian
+                  height: double
+                      .infinity, // Đảm bảo hình ảnh chiếm toàn bộ chiều cao của ConstrainedBox
+                  width: double
+                      .infinity, // Đảm bảo hình ảnh chiếm toàn bộ chiều rộng của ConstrainedBox
                   errorBuilder: (context, error, stackTrace) {
                     return const Icon(Icons.error);
                   },

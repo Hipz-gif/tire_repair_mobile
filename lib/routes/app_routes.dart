@@ -1,8 +1,8 @@
 import 'package:tire_repair_mobile/common/view/page_under_construction.dart';
 import 'package:tire_repair_mobile/presentation/pages/application/application_view.dart';
-import 'package:tire_repair_mobile/presentation/pages/home_page.dart';
-import 'package:tire_repair_mobile/presentation/pages/login_page.dart';
-import 'package:tire_repair_mobile/presentation/pages/register_page.dart';
+import 'package:tire_repair_mobile/presentation/pages/home/home_page.dart';
+import 'package:tire_repair_mobile/presentation/pages/login/login_page.dart';
+import 'package:tire_repair_mobile/presentation/pages/register/register_page.dart';
 import 'package:tire_repair_mobile/presentation/pages/splash_screen.dart';
 
 import '../resources/routes.dart';
