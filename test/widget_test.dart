@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tire_repair_mobile/main.dart'; // Import main.dart để test UI
@@ -57,7 +56,6 @@ void main() {
       ),
     );
 
-    // Kiểm tra xem SplashScreen có xuất hiện không
     expect(find.byType(SplashScreen), findsOneWidget);
   });
 }
