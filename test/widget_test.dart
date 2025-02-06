@@ -1,30 +1,63 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:tire_repair_mobile/main.dart';
+import 'package:tire_repair_mobile/main.dart'; // Import main.dart để test UI
+import 'package:tire_repair_mobile/di/service_locator.dart';
+import 'package:tire_repair_mobile/domain/repositories/auth_repository.dart';
+import 'package:tire_repair_mobile/domain/repositories/spare_part_repository.dart';
+import 'package:tire_repair_mobile/domain/repositories/banner_repository.dart';
+import 'package:tire_repair_mobile/presentation/blocs/auth_bloc.dart';
+import 'package:tire_repair_mobile/presentation/blocs/banner_bloc.dart';
+import 'package:tire_repair_mobile/presentation/blocs/spare_part_bloc.dart';
+import 'package:tire_repair_mobile/presentation/pages/splash_screen.dart';
+import 'mock_repositories.dart';
+import 'mock_blocs.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  setUp(() {
+    setupLocator(); // Thiết lập mock trước khi chạy test
+  });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  testWidgets('SplashScreen is displayed on app launch',
+      (WidgetTester tester) async {
+    // Mock các repository
+    final mockAuthRepository = MockAuthRepository();
+    final mockSparePartRepository = MockSparePartRepository();
+    final mockBannerRepository = MockBannerRepository();
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Mock các bloc
+    final mockAuthBloc = MockAuthBloc();
+    final mockSparePartBloc = MockSparePartBloc();
+    final mockBannerBloc = MockBannerBloc();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Thiết lập môi trường với các bloc và repository mock
+    await tester.pumpWidget(
+      MultiBlocProvider(
+        providers: [
+          RepositoryProvider<AuthRepository>(
+            create: (context) => mockAuthRepository,
+          ),
+          RepositoryProvider<SparePartRepository>(
+            create: (context) => mockSparePartRepository,
+          ),
+          RepositoryProvider<BannerRepository>(
+            create: (context) => mockBannerRepository,
+          ),
+          BlocProvider<AuthBloc>(
+            create: (context) => mockAuthBloc,
+          ),
+          BlocProvider<SparePartBloc>(
+            create: (context) => mockSparePartBloc,
+          ),
+          BlocProvider<BannerBloc>(
+            create: (context) => mockBannerBloc..add(FetchBanners()),
+          ),
+        ],
+        child: const MyApp(),
+      ),
+    );
+
+    // Kiểm tra xem SplashScreen có xuất hiện không
+    expect(find.byType(SplashScreen), findsOneWidget);
   });
 }
