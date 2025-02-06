@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tire_repair_mobile/resources/color.dart';
+import 'package:tire_repair_mobile/resources/routes.dart';
 import 'package:tire_repair_mobile/service/auth_service.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,14 +25,12 @@ class SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 2), () {
       if (token != null) {
         Navigator.pushReplacementNamed(
-            // ignore: use_build_context_synchronously
             context,
-            '/home'); // Nếu có token, chuyển sang HomePage
+            RouteName
+                .application); // Điều hướng tới Application nếu đã có token
       } else {
         Navigator.pushReplacementNamed(
-            // ignore: use_build_context_synchronously
-            context,
-            '/login'); // Nếu không có token, chuyển sang LoginPage
+            context, RouteName.login); // Điều hướng tới Login nếu chưa có token
       }
     });
   }

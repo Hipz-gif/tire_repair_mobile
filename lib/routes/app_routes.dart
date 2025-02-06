@@ -1,4 +1,5 @@
 import 'package:tire_repair_mobile/common/view/page_under_construction.dart';
+import 'package:tire_repair_mobile/presentation/pages/application/application_view.dart';
 import 'package:tire_repair_mobile/presentation/pages/home_page.dart';
 import 'package:tire_repair_mobile/presentation/pages/login_page.dart';
 import 'package:tire_repair_mobile/presentation/pages/register_page.dart';
@@ -21,6 +22,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     case RouteName.home:
       return _pageBuilder((_) => const HomePage(), settings: settings);
+    case RouteName.application:
+      return _pageBuilder((_) => const ApplicationView(), settings: settings);
     default:
       return _pageBuilder((_) => const PageUnderConstruction(),
           settings: settings);

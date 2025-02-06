@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tire_repair_mobile/presentation/blocs/auth_bloc.dart';
+import 'package:tire_repair_mobile/resources/routes.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -80,7 +81,8 @@ class LoginFormState extends State<LoginForm> {
                         if (state is AuthSuccess && context.mounted) {
                           Future.microtask(() {
                             // ignore: use_build_context_synchronously
-                            Navigator.pushReplacementNamed(context, '/home');
+                            Navigator.pushReplacementNamed(
+                                context, RouteName.application);
                           });
                         }
 
