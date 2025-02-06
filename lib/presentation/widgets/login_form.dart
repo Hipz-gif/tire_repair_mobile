@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tire_repair_mobile/presentation/blocs/auth_bloc.dart';
 
 class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
+
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -36,7 +38,7 @@ class _LoginFormState extends State<LoginForm> {
                   children: <Widget>[
                     TextFormField(
                       controller: _emailController,
-                      decoration: InputDecoration(labelText: 'Email'),
+                      decoration: const InputDecoration(labelText: 'Email'),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Vui lòng nhập email';
@@ -67,11 +69,11 @@ class _LoginFormState extends State<LoginForm> {
                         return null;
                       },
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     BlocBuilder<AuthBloc, AuthState>(
                       builder: (context, state) {
                         if (state is AuthLoading) {
-                          return Center(child: CircularProgressIndicator());
+                          return const Center(child: CircularProgressIndicator());
                         }
 
                         if (state is AuthSuccess) {
@@ -92,7 +94,7 @@ class _LoginFormState extends State<LoginForm> {
                                   );
                             }
                           },
-                          child: Text('Đăng nhập'),
+                          child: const Text('Đăng nhập'),
                         );
                       },
                     ),

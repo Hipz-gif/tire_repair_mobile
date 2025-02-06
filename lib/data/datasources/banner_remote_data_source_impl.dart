@@ -7,7 +7,7 @@ import 'package:tire_repair_mobile/core/utils/api_constants.dart';
 class BannerRemoteDataSourceImpl implements BannerRemoteDataSource {
   @override
   Future<List<BannerModel>> fetchBanners() async {
-    final url = Uri.parse('${ApiConstants.baseUrlSpareParts}/advertisements');
+    final url = Uri.parse(ApiConstants.advertisements);
 
     try {
       final response =

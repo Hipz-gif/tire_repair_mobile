@@ -5,6 +5,8 @@ import 'package:tire_repair_mobile/presentation/widgets/login_form.dart';
 import 'package:tire_repair_mobile/resources/color.dart';
 
 class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,13 +32,13 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment
                     .center, // Căn giữa các widget trong Column
                 children: [
-                  LoginForm(),
+                  const LoginForm(),
                   TextButton(
                     onPressed: () {
                       Navigator.pushNamed(context,
                           '/register'); // Điều hướng sang trang đăng ký
                     },
-                    child: Text('Chưa có tài khoản? Đăng ký ngay'),
+                    child: const Text('Chưa có tài khoản? Đăng ký ngay'),
                   ),
                 ],
               ),

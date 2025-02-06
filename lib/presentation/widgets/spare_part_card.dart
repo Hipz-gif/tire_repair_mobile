@@ -28,7 +28,7 @@ class SparePartCard extends StatelessWidget {
               color: Colors.grey.withOpacity(0.2),
               spreadRadius: 2,
               blurRadius: 5,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
           color: Colors.white,
@@ -49,7 +49,7 @@ class SparePartCard extends StatelessWidget {
               padding: const EdgeInsets.all(5.0),
               child: Text(
                 sparePart.partName,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
                   color: Colors.black87,

@@ -3,7 +3,10 @@ import 'package:tire_repair_mobile/resources/color.dart';
 import 'package:tire_repair_mobile/service/auth_service.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SplashScreenState createState() => _SplashScreenState();
 }
 
@@ -19,14 +22,17 @@ class _SplashScreenState extends State<SplashScreen> {
     final token =
         await authService.getToken(); // Kiểm tra token từ SharedPreferences
 
-    // Chờ 2 giây rồi điều hướng
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       if (token != null) {
         Navigator.pushReplacementNamed(
-            context, '/home'); // Nếu có token, chuyển sang HomePage
+            // ignore: use_build_context_synchronously
+            context,
+            '/home'); // Nếu có token, chuyển sang HomePage
       } else {
         Navigator.pushReplacementNamed(
-            context, '/login'); // Nếu không có token, chuyển sang LoginPage
+            // ignore: use_build_context_synchronously
+            context,
+            '/login'); // Nếu không có token, chuyển sang LoginPage
       }
     });
   }

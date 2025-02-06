@@ -2,17 +2,11 @@ import 'package:tire_repair_mobile/domain/entities/user.dart';
 
 class UserModel extends User {
   UserModel(
-      {required String name,
-      required String phone,
-      required String address,
-      required String email,
-      required String password})
-      : super(
-            name: name,
-            phone: phone,
-            address: address,
-            email: email,
-            password: password);
+      {required super.name,
+      required super.phone,
+      required super.address,
+      required super.email,
+      required super.password});
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(

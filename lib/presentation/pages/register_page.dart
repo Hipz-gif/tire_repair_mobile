@@ -6,12 +6,14 @@ import 'package:tire_repair_mobile/presentation/blocs/auth_bloc.dart';
 import 'package:tire_repair_mobile/presentation/widgets/register_form.dart';
 
 class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: BlocProvider(
       create: (context) => AuthBloc(authRepository: locator<AuthRepository>()),
-      child: RegisterForm(),
+      child: const RegisterForm(),
     ));
   }
 }

@@ -13,10 +13,10 @@ class SearchBarWidget extends StatelessWidget {
         onChanged: onSearch, // Gọi callback khi thay đổi nội dung
         decoration: InputDecoration(
           hintText: 'Tìm kiếm phụ tùng...',
-          prefixIcon: Icon(Icons.search),
+          prefixIcon: const Icon(Icons.search),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Colors.grey),
           ),
           filled: true,
           fillColor: Colors.white,

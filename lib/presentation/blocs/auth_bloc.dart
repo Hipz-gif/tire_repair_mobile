@@ -48,7 +48,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthSuccess(message: 'Đăng ký thành công!'));
 
         // Giả sử bạn nhận được token sau khi đăng ký thành công
-        final String token = 'sample_token'; // Thay bằng token thực tế
+        const String token = 'sample_token'; // Thay bằng token thực tế
         final authService = AuthService();
         await authService.saveToken(token); // Lưu token
       } catch (e) {

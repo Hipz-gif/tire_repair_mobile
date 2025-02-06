@@ -10,6 +10,7 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -25,7 +26,7 @@ class _HomePageState extends State<HomePage> {
         ..add(FetchSpareParts()),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Trang Chủ',
+          title: const Text('Trang Chủ',
               style:
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
           backgroundColor: ColorsGlobal.themeApp,
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
           child: BlocBuilder<SparePartBloc, SparePartState>(
             builder: (context, state) {
               if (state is SparePartLoading) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (state is SparePartLoaded) {
                 final filteredParts = state.spareParts
                     .where((part) => part.partName
@@ -62,7 +63,8 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                       child: GridView.builder(
                         padding: const EdgeInsets.all(16),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
                           crossAxisSpacing: 8.0,
                           mainAxisSpacing: 8.0,
@@ -77,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 );
               }
-              return Center(child: Text('Không có dữ liệu.'));
+              return const Center(child: Text('Không có dữ liệu.'));
             },
           ),
         ),

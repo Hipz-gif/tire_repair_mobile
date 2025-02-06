@@ -8,10 +8,9 @@ import 'package:tire_repair_mobile/data/models/spare_part_model.dart';
 class SparePartRemoteDataSourceImpl implements SparePartRemoteDataSource {
   @override
   Future<List<SparePartModel>> fetchSpareParts() async {
-    final url = Uri.parse('${ApiConstants.baseUrlSpareParts}/spare-parts');
+    final url = Uri.parse(ApiConstants.spareParts);
 
     try {
-      print('Sending request to $url');
       final response = await http.get(
         url,
         headers: {'Content-Type': 'application/json'},

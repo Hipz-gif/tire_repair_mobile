@@ -12,8 +12,7 @@ class SparePartDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(sparePart.partName),
-        backgroundColor:
-            ColorsGlobal.themeApp, // Bạn có thể thay đổi màu nền theo theme
+        backgroundColor: ColorsGlobal.themeApp,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,20 +28,20 @@ class SparePartDetailPage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             sparePart.partName,
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             'Giá: ${sparePart.partPrice.toStringAsFixed(2)} VNĐ',
-            style: TextStyle(fontSize: 18, color: Colors.green),
+            style: const TextStyle(fontSize: 18, color: Colors.green),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             'Số lượng: ${sparePart.stockQuantity}',
-            style: TextStyle(fontSize: 18, color: Colors.black54),
+            style: const TextStyle(fontSize: 18, color: Colors.black54),
           ),
         ],
       ),
